@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; background-color: #f4f4f9; }
+        .task-form { display: flex; gap: 10px; margin-bottom: 20px; }
+        .task-form input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: white; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .completada span { text-decoration: line-through; color: gray; }
+        button { padding: 8px 12px; cursor: pointer; border: none; border-radius: 4px; background-color: #28a745; color: white; font-weight: bold; }
+        button.delete-btn { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>Mis Tareas</h1>
+    
+    <form class="task-form" id="taskForm">
+        <input type="text" id="taskTitle" placeholder="Añadir una nueva tarea..." required>
+        <button type="submit">Añadir</button>
+    </form>
+
+    <div id="taskList"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>
