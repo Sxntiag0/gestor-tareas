@@ -11,7 +11,27 @@ app.use(express.json());
 
 app.get('/api/tasks', async (req, res) => {
     try {
-        const [rows] = await db.execute('SELECT * FROM tasks ORDER BY created_at DESC');
+        const { status, search } = req.query;
+        
+        
+        let query = 'SELECT * FROM tasks WHERE 1=1';
+        let params = [];
+
+        
+        if (status) {
+            query += ' AND status = ?';
+            params.push(status);
+        }
+
+        
+        if (search) {
+            query += ' AND title LIKE ?';
+            params.push(`%${search}%`); 
+        }
+
+        query += ' ORDER BY created_at DESC';
+
+        const [rows] = await db.execute(query, params);
         res.json(rows);
     } catch (error) {
         res.status(500).json({ error: error.message });
